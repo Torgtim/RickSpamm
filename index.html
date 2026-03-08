@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Spam</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            overflow: hidden;
+        }
+
+        /* Lager et rutenett av videoer */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            width: 100vw;
+            height: 100vh;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Det blinkende smilefjeset */
+        .smiley {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 200px;
+            color: yellow;
+            z-index: 999;
+            pointer-events: none;
+            animation: blink 0.2s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="smiley">☺</div>
+
+    <div class="video-grid" id="grid">
+        <!-- Genererer mange videoer -->
+    </div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const videoUrl = "https://dn721809.ca.archive.org/0/items/youtube-xvFZjo5PgG0/xvFZjo5PgG0.webm";
+        
+        // Fyller skjermen med 50 videoer
+        for (let i = 0; i < 50; i++) {
+            const video = document.createElement('video');
+            video.src = videoUrl;
+            video.autoplay = true;
+            video.loop = true;
+            video.muted = true; // De fleste nettlesere krever mute for å autoplay
+            grid.appendChild(video);
+        }
+    </script>
+
+</body>
+</html>
